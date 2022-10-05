@@ -3,7 +3,7 @@ name: Tests
 on:
   pull_request:
   push:
-    branches: [master, main]
+    branches: [master, main, dev]
 
 jobs:
   test:
@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [7.2, 7.3, 7.4, 8.0, 8.1]
+        php: [8.0, 8.1]
         stability: [prefer-lowest, prefer-stable]
 
     name: PHP ${{ matrix.php }} - ${{ matrix.stability }} Test
@@ -37,5 +37,4 @@ jobs:
           command: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
 
       - name: Run tests
-        run: ./vendor/bin/phpunit
-        vendor/bin/phpunit --verbose
+        run: ./vendor/bin/phpunit --verbose
