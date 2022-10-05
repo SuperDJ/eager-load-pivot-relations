@@ -7,6 +7,9 @@ use AjCastro\EagerLoadPivotRelations\Tests\Database\Factories\CarFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 /**
@@ -34,12 +37,12 @@ class Car extends Model
         'brand_id',
     ];
 
-    public function brand()
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }
 
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)
             ->withPivot('color_id')
@@ -47,7 +50,7 @@ class Car extends Model
             ->as('car_user');
     }
 
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return CarFactory::new();
     }

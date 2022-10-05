@@ -1,20 +1,18 @@
 <?php
 
 namespace AjCastro\EagerLoadPivotRelations\Tests;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
+    use InteractsWithDatabase;
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): void
     {
     }
 
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         ( new \CreateUsersTable )->up();
         ( new \CreatePasswordResetsTable )->up();

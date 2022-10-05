@@ -11,9 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PivotTest extends TestCase
 {
-    use RefreshDatabase;
-
-    public function test_it_can_use_with_pivot_relations()
+    public function test_it_can_use_with_pivot_relations(): void
     {
         $user = User::factory()->create();
         $pivots = CarUser::factory(['user_id' => $user->id])->count( 2 )->create();
@@ -28,7 +26,7 @@ class PivotTest extends TestCase
         $this->assertInstanceOf(Color::class, $user->cars[0]->pivot->color);
     }
 
-    public function test_it_can_use_load_pivot_relations()
+    public function test_it_can_use_load_pivot_relations(): void
     {
         $user = User::factory()->create();
         $pivots = CarUser::factory(['user_id' => $user->id])->count( 2 )->create();
@@ -42,7 +40,7 @@ class PivotTest extends TestCase
         $this->assertInstanceOf(Color::class, $user->cars[0]->pivot->color);
     }
 
-    public function test_it_can_use_load_missing_pivot_relations()
+    public function test_it_can_use_load_missing_pivot_relations(): void
     {
         $user = User::factory()->create();
         $pivots = CarUser::factory(['user_id' => $user->id])->count( 2 )->create();
@@ -56,7 +54,7 @@ class PivotTest extends TestCase
         $this->assertInstanceOf(Color::class, $user->cars[0]->pivot->color);
     }
 
-    public function test_it_can_use_with_custom_pivot_relations()
+    public function test_it_can_use_with_custom_pivot_relations(): void
     {
         $car = Car::factory()->create();
         $pivots = CarUser::factory(['car_id' => $car->id])->count( 2 )->create();
@@ -71,7 +69,7 @@ class PivotTest extends TestCase
         $this->assertInstanceOf(Color::class, $car->users[0]->car_user->color);
     }
 
-    public function test_it_can_use_load_custom_pivot_relations()
+    public function test_it_can_use_load_custom_pivot_relations(): void
     {
         $car = Car::factory()->create();
         $pivots = CarUser::factory(['car_id' => $car->id])->count( 2 )->create();
@@ -85,7 +83,7 @@ class PivotTest extends TestCase
         $this->assertInstanceOf(Color::class, $car->users[0]->car_user->color);
     }
 
-    public function test_it_can_use_load_missing_custom_pivot_relations()
+    public function test_it_can_use_load_missing_custom_pivot_relations(): void
     {
         $car = Car::factory()->create();
         $pivots = CarUser::factory(['car_id' => $car->id])->count( 2 )->create();

@@ -11,10 +11,10 @@ class CreateColorsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('colors', static function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->timestamps();
         });
@@ -25,7 +25,7 @@ class CreateColorsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('colors');
     }

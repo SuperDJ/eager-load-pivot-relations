@@ -6,6 +6,8 @@ use AjCastro\EagerLoadPivotRelations\Tests\Database\Factories\ColorFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int $id
@@ -27,17 +29,17 @@ class Color extends Model
         'name'
     ];
 
-    public function cars()
+    public function cars(): BelongsToMany
     {
         return $this->belongsToMany(Car::class);
     }
 
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
 
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return ColorFactory::new();
     }

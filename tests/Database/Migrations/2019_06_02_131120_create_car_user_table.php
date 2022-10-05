@@ -11,10 +11,10 @@ class CreateCarUserTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('car_user', static function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
 
             $table->unsignedBigInteger('car_id');
             $table->foreign('car_id')->references('id')->on('cars')->cascadeOnDelete();
@@ -34,7 +34,7 @@ class CreateCarUserTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('car_user');
     }

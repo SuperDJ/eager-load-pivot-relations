@@ -11,9 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PaginateTest extends TestCase
 {
-    use RefreshDatabase;
-
-    public function test_it_can_paginate_with_pivot_relations()
+    public function test_it_can_paginate_with_pivot_relations(): void
     {
         $pivots = CarUser::factory()->count( 30 )->create();
 
@@ -26,7 +24,7 @@ class PaginateTest extends TestCase
         $this->assertInstanceOf(LengthAwarePaginator::class, $users);
     }
 
-    public function test_it_can_paginate_after_eager_loading_pivot_relations()
+    public function test_it_can_paginate_after_eager_loading_pivot_relations(): void
     {
         $this->markTestSkipped('Failing see #3');
         $pivots = CarUser::factory()->count( 30 )->create();
@@ -36,7 +34,7 @@ class PaginateTest extends TestCase
         $this->assertInstanceOf(LengthAwarePaginator::class, $user);
     }
 
-    public function test_it_can_paginate_with_custom_pivot_relations()
+    public function test_it_can_paginate_with_custom_pivot_relations(): void
     {
         $pivots = CarUser::factory()->count( 30 )->create();
 
@@ -49,7 +47,7 @@ class PaginateTest extends TestCase
         $this->assertInstanceOf(LengthAwarePaginator::class, $cars);
     }
 
-    public function test_it_can_paginate_after_eager_loading_custom_pivot_relations()
+    public function test_it_can_paginate_after_eager_loading_custom_pivot_relations(): void
     {
         $this->markTestSkipped('Failing see #3');
         $pivots = CarUser::factory()->count( 30 )->create();

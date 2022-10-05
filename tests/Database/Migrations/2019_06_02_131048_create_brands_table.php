@@ -11,10 +11,10 @@ class CreateBrandsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('brands', static function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->string('logo');
             $table->timestamps();
@@ -26,7 +26,7 @@ class CreateBrandsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('brands');
     }

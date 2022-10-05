@@ -5,7 +5,10 @@ namespace AjCastro\EagerLoadPivotRelations\Tests\Models;
 use AjCastro\EagerLoadPivotRelations\Tests\Database\Factories\CarUserFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @property int $id
@@ -33,27 +36,27 @@ class CarUser extends Pivot
         'user_id'
     ];
 
-    public function car()
+    public function car(): BelongsTo
     {
         return $this->belongsTo(Car::class);
     }
 
-    public function color()
+    public function color(): BelongsTo
     {
         return $this->belongsTo(Color::class);
     }
 
-    public function tires()
+    public function tires(): HasMany
     {
         return $this->hasMany(Tire::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return CarUserFactory::new();
     }

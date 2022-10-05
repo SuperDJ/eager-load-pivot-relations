@@ -11,14 +11,14 @@ class CreateTiresTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tires', static function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('brand');
             $table->integer('profile_depth');
 
-            $table->bigInteger('car_user_id');
+            $table->unsignedBigInteger('car_user_id');
             $table->foreign('car_user_id')->references('id')->on('car_user')->cascadeOnDelete();
 
             $table->timestamps();
@@ -30,7 +30,7 @@ class CreateTiresTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('tires');
     }

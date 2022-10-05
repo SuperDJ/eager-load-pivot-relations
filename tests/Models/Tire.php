@@ -6,6 +6,7 @@ use AjCastro\EagerLoadPivotRelations\Tests\Database\Factories\TireFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @property int $id
@@ -31,7 +32,7 @@ class Tire extends Model
         'car_user_id',
     ];
 
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return TireFactory::new();
     }
